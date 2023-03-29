@@ -3,27 +3,36 @@ function init() {
 
 }
 
-$(document).ready(function () {
-    $('#lblmensaje').hide();
-    $('#lblerror').hide();
-    $('#lblregistro').hide();
-});
-
 $(document).on("click", "#btnlogin", function () {
     var usu_correo = $('#txtcorreo').val();
     var usu_pass = $('#txtpass').val();
 
     if (usu_correo == '' || usu_pass == '') {
         console.log("Vacios");
-        $('#lblmensaje').show();
-        $('#lblerror').hide();
+        Swal.fire(
+            'Error!',
+            'Campos Vacios',
+            'error'
+        );
     } else {
         $.post("controller/usuario.php?op=acceso", { usu_correo: usu_correo, usu_pass: usu_pass }, function (data) {
             if (data == 0) {
-                $('#lblerror').show();
-                $('#lblmensaje').hide();
+                Swal.fire(
+                    'Advertencia!',
+                    'Verificar Credenciales',
+                    'warning'
+                );
             } else {
-                window.open('http://localhost:80/Login/view/Home/', '_self');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bienvenido!',
+                    text: 'Ingresando...',
+                    confirmButtonText: `Ok`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.open('http://localhost:80/Login/view/Home/', '_self');
+                    }
+                });
             }
         });
     }
@@ -32,9 +41,6 @@ $(document).on("click", "#btnlogin", function () {
 // Fin "Login"
 
 //Inicio Sign Up
-// function init() {
-
-// }
 
 $(document).ready(function () {
 
@@ -133,11 +139,22 @@ document.getElementById('btnloging').addEventListener('click', function () {
 
             $.post("controller/usuario.php?op=accesosocial", { usu_correo: result.user.providerData[0].email }, function (data) {
                 if (data == 0) {
-                    $('#lblerror').hide();
-                    $('#lblmensaje').hide();
-                    $('#lblregistro').show();
+                    Swal.fire(
+                        'Ups!',
+                        'Correo No Registrado',
+                        'error'
+                    );
                 } else {
-                    window.open('http://localhost:80/Login/view/Home/', '_self');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bienvenido!',
+                        text: 'Ingresando...',
+                        confirmButtonText: `Ok`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.open('http://localhost:80/Login/view/Home/', '_self');
+                        }
+                    });
                 }
             });
         }).catch((error) => {
@@ -158,11 +175,22 @@ document.getElementById('btnloginf').addEventListener('click', function () {
 
             $.post("controller/usuario.php?op=accesosocial", { usu_correo: result.user.providerData[0].email }, function (data) {
                 if (data == 0) {
-                    $('#lblerror').hide();
-                    $('#lblmensaje').hide();
-                    $('#lblregistro').show();
+                    Swal.fire(
+                        'Ups!',
+                        'Correo No Registrado',
+                        'error'
+                    );
                 } else {
-                    window.open('http://localhost:80/Login/view/Home/', '_self');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bienvenido!',
+                        text: 'Ingresando...',
+                        confirmButtonText: `Ok`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.open('http://localhost:80/Login/view/Home/', '_self');
+                        }
+                    });
                 }
             });
         }).catch((error) => {
@@ -183,11 +211,22 @@ document.getElementById('btnloginh').addEventListener('click', function () {
 
             $.post("controller/usuario.php?op=accesosocial", { usu_correo: result.user.providerData[0].email }, function (data) {
                 if (data == 0) {
-                    $('#lblerror').hide();
-                    $('#lblmensaje').hide();
-                    $('#lblregistro').show();
+                    Swal.fire(
+                        'Ups!',
+                        'Correo No Registrado',
+                        'error'
+                    );
                 } else {
-                    window.open('http://localhost:80/Login/view/Home/', '_self');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bienvenido!',
+                        text: 'Ingresando...',
+                        confirmButtonText: `Ok`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.open('http://localhost:80/Login/view/Home/', '_self');
+                        }
+                    });
                 }
             });
         }).catch((error) => {
@@ -309,7 +348,3 @@ document.getElementById('btnloginhh').addEventListener('click', function () {
         console.log(error);
     });
 });
-
-
-
-

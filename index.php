@@ -34,7 +34,7 @@
                      <input type="text" id="txtcorreo" name="txtcorreo" placeholder="Email Address" required>
                   </div>
 
-                  <div class="alert alert-danger" role="alert" id="lblmensaje">
+                  <!-- <div class="alert alert-danger" role="alert" id="lblmensaje">
                   <strong class="d-block d-sm-inline-block-force">Error!</strong> Campos vacios.
                   </div>
 
@@ -44,7 +44,7 @@
 
                   <div class="alert alert-warning" role="alert" id="lblregistro">
                   <strong class="d-block d-sm-inline-block-force">Error!</strong> No Registrado.
-                  </div>
+                  </div> -->
 
                   <div class="field">
                      <input type="password" id="txtpass" name="txtpass" placeholder="Password" required>
